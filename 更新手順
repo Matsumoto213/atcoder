@@ -2,4 +2,4 @@
 cd desktop/atcoder
 git add .
 git commit -a -m "9月9日午前の更新"
-git push -f origin master
+git push -f origin main
