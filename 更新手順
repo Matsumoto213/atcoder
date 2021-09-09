@@ -1,0 +1,5 @@
+更新手順
+cd desktop/atcoder
+git add atcoder
+git commit -m "コメント"
+git push origin master
