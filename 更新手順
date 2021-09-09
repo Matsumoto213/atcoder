@@ -1,5 +1,5 @@
 更新手順
 cd desktop/atcoder
 git add .
-git commit -a -m "更新"
-git push origin master
+git commit -a -m "9月9日の更新"
+git push -f origin master
