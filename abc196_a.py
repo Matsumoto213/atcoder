@@ -1,3 +1,7 @@
-x = input().split('.')
+a,b = map(int, input().split())
+c,d = map(int, input().split())
 
-print(x[0])
+a_b = max(a,b)
+c_d = min(c,d)
+
+print(a_b - c_d)
