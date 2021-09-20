@@ -12,7 +12,7 @@ for i in range(N + 1):
         if i in A:
             step[i] = 0
     else:
-        step[i] = step[i - 1]  step[i - 2]
+        step[i] = step[i - 1] + step[i - 2]
         if i in A:
             step[i] = 0
         step[i] %= mod
