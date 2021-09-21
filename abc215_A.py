@@ -1,3 +1,4 @@
+# 完全に一致しているかがポイント
 s = "Hello,World!"
 n = input()
 
