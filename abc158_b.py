@@ -1,13 +1,15 @@
-n,a,b = map(int, input().split())
+# A+B個周期なので、A+Bで割った商だけ周期を考えて、あまりをなんやかんやする
+n,a,b = map(int,input().split())
+ 
+count = (n // (a + b)) * a
+# print(count)
 
-ans = ''
-while True:
-    if len(ans) >= n:
-        break
-    ans = ans+'b'*a
-    ans = ans+'r'*b
+mod = n % (a + b)
+# print(mod)
 
-result = ans[:n]
-
-print(result.count('b'))
+if mod > a:
+    count += a
+else:
+    count += mod
+print(count)
 
