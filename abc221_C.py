@@ -1,20 +1,10 @@
-import itertools
-n = int(input())
-n = str(n)
+n = sorted(input())[::-1]
 
-all = itertools.permutations(n, len(n))
-ans = []
-
-for x in all:
-    x = list(x)
-    if x[0] != 0 and x[-1] != 0:
-        before = "".join(x[:len(x) - 1])
-        after = "".join(x[-1])
-        num = int(before) * int(after)
-        ans.append(num)
-
-
-print(max(ans))
-
-        
-      
+# Nの先頭から奇数文字目からなる文字列を A、偶数文字目からなる文字列を B とする
+a = n[0::2]
+b = n[1::2]
+print(a)
+print(b)
+ans_a = int("".join(a))
+ans_b = int("".join(b))
+print(ans_a * ans_b)
