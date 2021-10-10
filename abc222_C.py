@@ -1,5 +1,5 @@
 n,m = map(int, input().split())
-# rank = {'1':0,'2':0,'3':0,'4':0}
+rank = {'1':0,'2':0,'3':0,'4':0}
 
 a = [input() for i in range(n * 2)]
 
