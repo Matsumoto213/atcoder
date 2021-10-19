@@ -11,7 +11,7 @@ while True:
         ans=s[idx]
         break
 
-if idx >= x:
-    print(i)
+if idx >= k:
+    print(1)
 else:
     print(ans)
