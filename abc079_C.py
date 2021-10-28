@@ -10,7 +10,7 @@ def solve():
         else:
             abcd = abcd[i:i+1]+"-"+abcd[i:]
         
-
+        ans = int(abcd)
         if ans == 7:
             return abcd
 
