@@ -2,7 +2,6 @@ s = input()
 
 
 for bit in range(1 << 3):
-    print(bit)
     ans = int(s[0])
     f = s[0]
 
