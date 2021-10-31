@@ -3,10 +3,6 @@ from itertools import product
 N, W = map(int, input().split())
 A = list(map(int, input().split()))
 
-# N, W = 5,10
-# A = [1,2,3,6,8]
-# ans = 0
-
 # i番目がA[i]を使って合計にたす
 
 def judge(pro):
