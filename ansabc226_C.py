@@ -15,3 +15,15 @@ def solve():
                 seen[V] = True
                 stack.append(v)
     return ans
+
+
+N = int(input())
+T = [0] * (N + 1)
+G = [[] for _ in range(N + 1)]
+
+for u in range(1, N + 1):
+    T[u], k, *A = map(int, input().split())
+    for v in A:
+        G[u].append(v)
+        G[v].append(u)
+print(solve())
