@@ -1,4 +1,4 @@
-H = int(input())
+H = int(input())　
 
 cnt = 1
 ans = 0
