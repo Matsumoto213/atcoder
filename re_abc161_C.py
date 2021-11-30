@@ -1,11 +1,8 @@
+# こういうループで見つけられない場合には共通点を見つける
+# それができない場合には余りに目を向ける
 N,K = map(int, input().split())
-cnt = 0
+ans = N % K
 
-while True:
-    ans = abs(N - K)
-    if ans > N:
-        print(N)
-        break
-    else:
-        N = min(N,ans) 
-    cnt += 1
+a = abs(ans - K)
+print(ans,a)
+print(min(ans,a))
