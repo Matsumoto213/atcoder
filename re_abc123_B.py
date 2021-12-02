@@ -3,6 +3,7 @@ l = []
 num = 10 ** 8
 num_idx = 0
 
+# 一桁目が一番小さいインデックスを取得
 for idx,i in enumerate(L):
     i = str(i)
     N = int(i[-1])
@@ -10,6 +11,7 @@ for idx,i in enumerate(L):
         num_idx = idx
         num = N
 
+# 上記で取得したインデックス以外は繰り上げてansにたす
 ans = 0
 for index,j in enumerate(L):
     j = str(j)
