@@ -5,9 +5,14 @@ A = list(map(int, input().split()))
 
 A.sort()
 L = Counter(A)
-key = L.values()
+key = L.keys()
+key = list(key)
 
 ma = -10 ** 8
+
+if N == 1:
+  print(1)
+  exit(0)
 
 for idx,i in enumerate(key):
     # 左端の場合
@@ -42,10 +47,3 @@ for idx,i in enumerate(key):
             cnt = L[i]
     ma = max(ma,cnt)
 print(ma)
-            
-            
-            
-            
-        
-
-
