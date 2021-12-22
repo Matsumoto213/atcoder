@@ -1,7 +1,3 @@
-import sys
-sys.setrecursionlimit(10 ** 5)
-input = sys.stdin.readline    ####
-def int1(x): return int(x) - 1
 def II(): return int(input())
 def MI(): return map(int, input().split())
 def MI1(): return map(int1, input().split())
@@ -16,6 +12,9 @@ def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
 INF = float('inf')
+import sys
+sys.setrecursionlimit(10 ** 5)
+input = sys.stdin.readline    ####
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 from math import ceil, floor, log2, log, sqrt, gcd
