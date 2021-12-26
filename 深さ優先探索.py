@@ -1,7 +1,6 @@
 # DFS
-
 N, Q = map(int, input().split())
-tree - [[] for _ in range(N)]
+tree = [[] for _ in range(N)]
 
 for _ in range(N - 1):
     a,b = map(int, input().split())
