@@ -15,7 +15,6 @@ for i in range(N):
         num = abs(B[idx - 1] - A[i])
     else:
         num = min(abs(B[idx] - A[i]),abs(B[idx - 1] - A[i]))
-    
     temp = min(num,temp)
     
 print(temp)
