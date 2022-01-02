@@ -20,7 +20,7 @@ from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 from math import ceil, floor, log2, log, sqrt, gcd
 from itertools import combinations as comb, combinations_with_replacement as comb_w, product, permutations
-from collections import deque, defaultdict
+from collections import deque, dict
 from pprint import pprint
 # import numpy as np    # cumsum
 from functools import reduce, lru_cache     # decorator: メモ化. max_size=128
