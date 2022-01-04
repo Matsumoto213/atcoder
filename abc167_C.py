@@ -26,7 +26,7 @@ for i in range(N):
     C[i], *A[i] = map(int, input().split())
     
 ans = INF
-for pro in product((0,1), repeat = n):
+for pro in product((0,1), repeat = N):
     ans = min(ans, judge(pro))
-
+    print(ans)
 print(ans if ans != INF else -1)
