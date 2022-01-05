@@ -1,7 +1,7 @@
 def solve():
     from itertools import product
     min_ =  1 << 60
-    for bit in product((0,1),repeat = M):
+    for bit in product((0,1),repeat = N):
         judge = [0] * M
         price = 0
         for i in range(M):
@@ -9,7 +9,8 @@ def solve():
                 price += C[i]
                 # iのアルゴリズムをjudgeのそれぞれに代入する
                 for j in range(M):
-                    judge[j] += algorithm[i][j]                  
+                    judge[j] += algorithm[i][j]
+        print(judge,price,bit)             
         over_x = 0
         for i in judge:
             if i >= X:

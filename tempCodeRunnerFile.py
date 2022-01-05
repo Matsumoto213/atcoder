@@ -1,3 +1,3 @@
-if len(x) == 1:
-    print(100 - int(x))
-    exit(0)
+print(B)
+# for i in K:
+#     print(B[i])
