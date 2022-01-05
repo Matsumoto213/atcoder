@@ -42,10 +42,12 @@ def solve():
         
 N,M = map(int, input().split())
 
+# タプルにしてリストに入れる方がデータ間同士での結び付けも容易に行うことができる
 conditions = []
 for _ in range(M):
     a,b = map(int,input().split())
     conditions.append((a,b))
+    
 
 K = int(input())
 people = []
