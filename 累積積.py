@@ -1,4 +1,5 @@
 # リストのインデックスまでの積を求める
+# 累積積
 import itertools
 import operator
 

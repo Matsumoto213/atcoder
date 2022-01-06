@@ -1,4 +1,5 @@
 # 約数を高速で列挙する
+# 約数全列挙
 def make_divisors(n):
     lower_divisors , upper_divisors = [], []
     i = 1

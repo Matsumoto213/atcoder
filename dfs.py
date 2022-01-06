@@ -10,7 +10,6 @@ for _ in range(M):
     A, B = map(int, input().split())
     # Pythonではindex0始まりなので、都市iを-1して揃える
     G[A-1].append(B-1)
-print(G)
 def dfs(v):
     if seen[v]:
         return
