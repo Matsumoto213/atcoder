@@ -1,30 +1,18 @@
 K,A,B = map(int,input().split())
 
 bis = 1
-money = 0
 
-# A円貯めるまでとビスケットを1枚叩いて増やした方がいいのかを判断する
-for _ in range(K):
-    if money != 1:
-        
-        # 交換までのビスケットの枚数に足りていない場合(B)
-        if bis < A:
-            bis += 1
-
-        # 足りている場合はa関数を用いて交換する
-        else:
-            bis = 0
-            money = 1
-    
+while K > 0:
+    temp = abs(A - bis + 2)
+    dis = B - A
+    # 残りの回数でビスケットがAまでとどき、B円に変換できる場合
+    if K >= temp and dis >= 2:
+        K -= temp
+        bis += abs(A - bis)
+        bis -= A
+        bis += B
+    # 届かない場合
     else:
-        money = 0
-        bis = B
-        
-    print(bis,money)
-        
+        bis += K
+        K = 0
 print(bis)
-        
-        
-        
-    
-    
