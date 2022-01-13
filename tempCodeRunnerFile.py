@@ -1,1 +1,1 @@
-            print(c,cnt)
+    # ans = min(ans, judge(pro))
