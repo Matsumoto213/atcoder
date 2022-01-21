@@ -8,6 +8,7 @@ for _ in range(N):
 
 ans = 0
 
+# 組みを求める場合はこのように2倍して1引いたものをかけそれから÷2をする
 for bit in cnt.values():
     if bit >= 2:
         ans += bit * (bit - 1) // 2
