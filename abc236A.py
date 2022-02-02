@@ -1,6 +1,5 @@
 S = input()
 a,b = map(int,input().split())
-
 for i,key in enumerate(S):
     i += 1
     if i == a:
