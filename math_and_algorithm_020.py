@@ -7,11 +7,11 @@ def judge(bit):
     ans = 0
     for i in range(N):
         if bit & (1 << i):
-            print(bit)
             ans += a[i]
-
-    return ans
         
+    if ans == 1000:
+        print(bin(bit),ans)
+    return ans
 
 result = 0
 for bit in range(1 << N):
