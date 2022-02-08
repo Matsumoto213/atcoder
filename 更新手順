@@ -1,5 +1,5 @@
 更新手順
 git add .
-git commit -a -m "2月6日"
+git commit -a -m "2月8日"
 git push  origin main
 
