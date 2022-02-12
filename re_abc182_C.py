@@ -11,6 +11,7 @@ for i in range(2 ** lenN):
             ans = ans + N[j] 
         else:
             erase += 1
+            
     if len(ans) >= 1:
         ans = int(ans)
     else:
