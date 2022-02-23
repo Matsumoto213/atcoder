@@ -19,6 +19,5 @@ for i in range(N):
         # 偶数でかつtempが奇数の場合
         else:
             pass
-
 ans = dis.count(True)
 print("Yes" if ans == N else "No")
