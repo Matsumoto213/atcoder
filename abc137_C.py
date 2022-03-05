@@ -1,6 +1,6 @@
 from collections import defaultdict
 N = int(input())
-cnt = defaultdict(int)
+cnt = dict(int)
 for _ in range(N):
     st1 = list(input())
     st2 = ''.join(sorted(st1))
