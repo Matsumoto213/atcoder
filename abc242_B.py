@@ -1,0 +1,5 @@
+S = list(input())
+len_S = len(S)
+S.sort()
+temp = ''.join(S)
+print(temp)
