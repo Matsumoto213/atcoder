@@ -10,5 +10,5 @@ for i in range(1,n):
     temp = []
     for m in range(max(0, i - k), i):
         temp.append(abs(h[m] - h[i] ) + dp[m])
-    dp[i] =min(tmp)
-print(dp[-1])
+    dp[i] = min(temp)
+print(dp[n-1])
