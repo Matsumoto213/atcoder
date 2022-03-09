@@ -1,1 +1,1 @@
-permutations
+h.sqrt(b) < math.sqrt(c) else 'No')
