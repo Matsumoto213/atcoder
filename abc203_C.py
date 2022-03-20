@@ -1,4 +1,4 @@
-from collections import defaultdict
+
 from collections import defaultdict
 # defaultdictを使えば、簡単に辞書を作ることができる
 N, K = map(int, input().split())
