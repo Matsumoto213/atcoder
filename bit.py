@@ -1,6 +1,6 @@
 from itertools import product
 
-def judge():
+def judge(bit):
     S = 0
     for i in range(N):
         if bit & (1 << i):
