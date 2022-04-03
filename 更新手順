@@ -1,4 +1,4 @@
 更新手順
 git add .
-git commit -a -m "4月2日"
+git commit -a -m "4月3日"
 git push  origin main
