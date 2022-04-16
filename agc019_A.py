@@ -1,7 +1,6 @@
 q,h,s,d = map(int, input().split())
 n = int(input())
-
-
+ans = 0
 while True:
     if n == 0:
         break
