@@ -1,24 +1,19 @@
 a,b,c,d,e,f,x = map(int, input().split())
+def function(a,c,x):
+    person = 0
+    rest = 0
+    while True:
+        if person + rest >= x:
+            return person
+        person += min(a, x - person - rest)
+        rest += c
 
-taka = 0
-rest = 0
-while True:
-    if taka + rest >= x:
-        break
-    taka += min(a,x - taka - rest)
-    rest += c
+takahashi = function(a,c,x)
+aoki = function(d,f,x)
 
-ao = 0
-r = 0
-while True:
-    if ao + r >= x:
-        break
-    ao += min(d,x - ao - r)
-    r += f
-
-if taka * b > ao * e:
+if takahashi * b > aoki * e:
     print('Takahashi')
-elif taka * b < ao * e:
+elif takahashi * b < aoki * e:
     print('Aoki')
 else:
     print('Draw')
