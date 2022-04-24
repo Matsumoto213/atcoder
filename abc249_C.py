@@ -1,16 +1,15 @@
 N,k = map(int, input().split())
-S = [input() for i in range(N)]
-import itertools
+S = [list(input()) for _ in range(N)]
 from collections import Counter
+from itertools import product
+print(S)
+ans = 0
 
-ma = - 10 ** 9
-for i in range(N):
-    for v in itertools.permutations(S,i + 1):
-        C = Counter()
-        ans = 0
-        v = list(v)
-        for l in v:
-            C += Counter(l)
-        val = list(C.values())
-        ma = max(val.count(k),ma)
-print(ma)
+# 全探索
+for pro in product((0, 1), repeat = N):
+    t = []
+    for i, p in enumerate(pro):
+        if p:
+            t.extend(S[i])
+    print(t)
+
