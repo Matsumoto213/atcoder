@@ -1,2 +1,2 @@
-    # else:
-    #     print(max(S) - min(S))
+    # if k >= 1:
+    #     a = L[i][2:]
