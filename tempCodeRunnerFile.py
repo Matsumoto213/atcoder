@@ -1,1 +1,1 @@
-0.5') else 'No')
+    print(n)
