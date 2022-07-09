@@ -1,12 +1,10 @@
 N,Q = map(int, input().split())
 S = list(input())
-from collections import deque
-S = deque(S)
+start = 0
 for i in range(Q):
-    query = input()
-    t,x = int(query[0]),int(query[2])
+    t,x = map(int, input().split())
+    if t == 1:
+        start = (start - x) % N
     if t == 2:
-        print(S[x - 1])
-    else:
-        temp = S[:x]
-        print(temp)
+        x -= 1
+        print(S[(start + x) % N])

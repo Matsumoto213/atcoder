@@ -1,16 +1,21 @@
 N = int(input())
+A = [input() for _ in range(N)]
 
-a = []
+ans = "0"
 
-for i in range(N):
-    A = list(map(int, input().split()))
-    a.append(A)
-ma = -10 ** 9
+dx = [0,0,1,1,1,-1,-1,-1]
+dy = [-1,1,1,0,-1,1,0,-1]
+
 for i in range(N):
     for j in range(N):
-        print(a[i][j])
-        if a[i][j] > ma:
-            ma = max(ma,int(a[i][j]))
-            max_i = i
-            max_j = j
-print(max_i,max_j)
+        # それぞれのマスに対して8方向進む
+        for d in range(8):
+            num = ""
+            for k in range(N):
+                print(i,j,dx[d],dy[d],k)
+                x = (i + dx[d] * k) % N
+                y = (j + dy[d] * k) % N
+                num += A[x][y]
+                print(num)
+            ans = max(ans, num)
+print(ans)
