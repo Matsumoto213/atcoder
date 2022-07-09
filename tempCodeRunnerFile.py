@@ -1,1 +1,1 @@
-    print(n)
+ (start - x) % N
