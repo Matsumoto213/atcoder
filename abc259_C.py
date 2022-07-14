@@ -1,21 +1,15 @@
-S = input()
-T = input()
+# ランレングス圧縮
+from itertools import groupby
+S = [(k, len(list(g))) for k, g in groupby(list(input()))]
+T = [(k, len(list(g))) for k, g in groupby(list(input()))]
 
-from collections import defaultdict
-# defaultdictを使えば、簡単に辞書を作ることができる
-dct = defaultdict(int)
-d = defaultdict(int)
+if len(S) != len(T):
+    print('No')
+    exit()
 
-for i in range(len(S)):
-    dct[S[i]] += 1
-
-for i in range(len(T)):
-    d[T[i]] += 1
-
-
-for key,value in d.items():
-    if value < dct[key] or value >= 2 and dct[key] < 2:
+for (s, m), (t, n) in zip(S, T):
+    print(s,m,t,n)
+    if not (s == t and (m == n == 1 or 1 < m <= n)):
         print('No')
         exit()
-
 print('Yes')
