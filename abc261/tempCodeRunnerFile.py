@@ -1,1 +1,1 @@
-print(ans)
+print(len(dict))
