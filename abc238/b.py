@@ -1,6 +1,6 @@
 N = int(input())
 A = list(map(int, input().split()))
-B = []
+B = [0]
 
 temp = 0
 for i in range(N):
@@ -8,14 +8,9 @@ for i in range(N):
     if temp >= 360:
         temp = temp - 360
     B.append(temp)
-
-
 B.sort()
-ans = - 10 ** 15 + 8
-
-if N == 1:
-    print(abs(360 - B[0]))
-else:
-    for i in range(N - 1):
-        ans = max(ans, B[i + 1] - B[i])
-    print(ans)
+ans = -10 ** 15 + 8
+for i in range(N):
+    temp = abs(abs(B[i + 1] - B[i]))
+    ans = max(ans,temp)
+print(max(360 - B[-1],ans))
