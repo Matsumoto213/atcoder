@@ -6,6 +6,7 @@ a = []
 b = []
 ab = defaultdict(list)
 
+# リストに対して値を追加していく
 for i in range(M):
     A,B = map(int, input().split())
     ab[A].append(B)
