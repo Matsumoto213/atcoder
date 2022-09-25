@@ -1,17 +1,37 @@
-n,x,y = map(int, input().split())
-v = [[] for _ in range(n)]
+N,X,Y = map(int,input().split())
+edge=[[]* N for _ in range(N)]
+import sys
+sys.setrecursionlimit(int(10 ** 9))
+from collections import deque
+ans = deque([])
+X -= 1
+Y -= 1
+for i in range(N - 1):
+    u,v = map(int,input().split())
+    u -= 1
+    v -= 1
+    edge[u].append(v)
+    edge[v].append(u)
+seen = [False] * N
+print(edge)
+# xから探索を開始する。
+def dfs(x):
+    # 今いる場所をansに追加する。
+    ans.append(x + 1)
 
-for i in range(n - 1):
-    a,b = map(int, input().split())
-    a -= 1 # listのindex参照をそのまま使いたいので頂点id(1から始まっている)を-1しておく
-    b -= 1 # aと同様
-    v[a].append(b + 1)
-    v[b].append(a + 1)
-print(v)
-# now = x
-# while True:
-#     print(now)
-#     if now == y:
-#         break
+    # 探索済みのindexをTrueにする。
+    seen[x] = True
 
-#     if v[now - 1]
+
+    for nx in edge[x]:
+        print(seen,seen[nx],nx,x,ans)
+        if nx == Y:
+            ans.append(Y + 1)
+            print(*ans)
+            exit()
+
+        if seen[nx] == False:
+            dfs(nx)
+            ans.pop()
+    
+dfs(X)
