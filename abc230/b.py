@@ -1,12 +1,4 @@
 S = input()
-T = 'oxxoxxoxxo'
+T = 'oxx' * 10 ** 5
 
-for i in range(len(S)):
-    if len(S) == 1:
-        break
-    if T[:len(S)] == S:
-        print('Yes')
-        exit()
-    else:
-        S = S[1:]
-print('No')
+print('Yes' if S in T else 'No')
