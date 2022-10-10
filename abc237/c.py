@@ -1,12 +1,9 @@
 S = input()
-cnt = 0
-while(1):
-    if S == S[::-1]:
+reverse = S[::-1]
+for _ in range(10 ** 4):
+    if S == reverse:
         print('Yes')
-    else:
-        S = 'a' + S
-    cnt += 1
-    if cnt >= 100000:
-        print('No')
         exit()
-        
+    S = 'a' + S
+    reverse = reverse + 'a'
+print('No')
