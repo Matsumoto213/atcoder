@@ -1,24 +1,14 @@
 N = int(input())
 A = list(map(int, input().split()))
-from collections import defaultdict
-ab = defaultdict(list)
-l = set()
-for i in range(N):
-    l.add(A[i])
+from typing import Counter
+a = set(A)
+a = list(a)
+a.sort()
+cnt = Counter(A)
 
-l = list(l)
-l.sort()
-temp = len(l)
+ans = [0] * N
+for i in range(len(a)):
+    ans[len(a) - i - 1] = cnt[a[i]]
 
-if N == 1:
-    print(1)
-    exit()
-
-for i in range(N - 1):
-    t = l.index(A[i])
-    tem = temp - t - 1
-    ab[tem] = A[i]
-
-
-for i in range(N):
-    print(A.count(ab[i]))
+for j in range(N):
+    print(ans[j])
