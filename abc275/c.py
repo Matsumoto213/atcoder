@@ -1,8 +1,8 @@
 import numpy as np
-import math
 S = [input() for _ in range(9)]
 L = []
 
+# 4点が正方形であるかどうかの判定
 def IsOrthogonal(a,b):
     return (a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) * (a[1] - b[1])
 
