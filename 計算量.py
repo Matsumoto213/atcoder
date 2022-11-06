@@ -8,13 +8,13 @@ for i in range(n):
     for j in range(n):
 # O(n**2) になる
 
-ここまではわかる
+# ここまではわかる
 
 
 # ランダウのO記法
 for i  in range(n):
     for j in range(n):
-        何かする
+        # 何かする
 
 
 
