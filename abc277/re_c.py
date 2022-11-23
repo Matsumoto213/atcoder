@@ -11,7 +11,6 @@ S = {1}
 # print(graph,que)
 while que:
     v = que.popleft()
-    # print(que,S)
     for i in graph[v]:
         if not i in S:
             que.append(i)

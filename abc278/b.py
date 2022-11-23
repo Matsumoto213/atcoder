@@ -60,12 +60,10 @@ while True:
         M += 1
     # 60分になったら
     if M == 60:
-        # 24時は存在しないためなし
-        if H < 24:
-            H += 1
-        else:
-            H = 0
+        H += 1
         M = 0
+    if H == 24:
+        H = 0
     H = str(H)
     M = str(M)
     if len(H) == 1:
