@@ -11,7 +11,7 @@ while n:
     if temp == 3:
         tem = min(x * temp,y)
     else:
-        tem = min(x * temp, y / temp)
+        tem = x * temp
     n -= temp
     ans += tem
 print(ans)
