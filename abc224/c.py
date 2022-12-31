@@ -20,6 +20,7 @@ for i in range(1, N + 1):
 ans = 0
 for v in itertools.combinations(l, 3):
     a,b,c = list(v)
+    print(a,b,c)
     circle = calc_triangle_area(xy[a],xy[b],xy[c])
     if circle > 0:
         ans += 1
