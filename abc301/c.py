@@ -7,7 +7,6 @@ def can_win(S, T):
     T_counts = {char: T.count(char) for char in replaceable}
     S_counts['@'] = S.count('@')
     T_counts['@'] = T.count('@')
-
     for char in replaceable:
         if S_counts[char] < T_counts[char]:
             needed = T_counts[char] - S_counts[char]
@@ -21,7 +20,6 @@ def can_win(S, T):
                 T_counts['@'] -= needed
             else:
                 return 'No'
-
     return 'Yes' if S_counts['@'] == T_counts['@'] else 'No'
 
 print(can_win(S,T))
