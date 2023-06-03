@@ -1,6 +1,6 @@
 更新手順
 git add .
-git commit -a -m "5月20日 abc303の復習"
+git commit -a -m "6月3日 abc304"
 git push  origin main
 
 次の問題の解答をPythonで出力してください
