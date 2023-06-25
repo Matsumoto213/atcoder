@@ -1,22 +1,17 @@
 def remove_parentheses(s):
-    stack_parentheses = []
-    stack_result = []
+    stack = []
+    removed = []
 
     for i, c in enumerate(s):
         if c == '(':
-            stack_parentheses.append(i)
-            stack_result.append((c, i))
+            stack.append(i)
         elif c == ')':
-            if stack_parentheses:
-                start = stack_parentheses.pop()
-                while stack_result and stack_result[-1][1] >= start:
-                    stack_result.pop()
-                if not stack_result or stack_result[-1][1] < start:
-                    stack_result.append((c, i))
-        else:
-            stack_result.append((c, i))
-
-    return ''.join(c for c, _ in stack_result)
+            if stack:
+                start = stack.pop()
+                removed.extend(range(start, i + 1))
+                print(start,removed,i)
+    removed = set(removed)
+    return ''.join(c for i, c in enumerate(s) if i not in removed)
 
 N = int(input())
 S = input()
