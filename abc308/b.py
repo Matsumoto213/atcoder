@@ -1,15 +1,15 @@
-N = int(input())
-S = [input() for _ in range(N)]
-
-def is_palindrome(s):
-    return s == s[::-1]
-
-def check_palindrome_pairs(strings):
-    for i in range(len(strings)):
-        for j in range(i + 1, len(strings)):
-            if is_palindrome(strings[i] + strings[j]) or is_palindrome(strings[j] + strings[i]):
-                return True
-    return False
-
-
-print('Yes' if check_palindrome_pairs(S) else 'No')
+N,M = map(int, input().split())
+C = input().split()
+D = input().split()
+P = list(map(int, input().split()))
+ans = 0
+for i in range(N):
+    idx = -1
+    if C[i] in D:
+        idx = D.index(C[i]) + 1
+    
+    if idx == -1:
+        ans += P[0]
+    else:
+        ans += P[idx]
+print(ans)

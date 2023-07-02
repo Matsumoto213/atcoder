@@ -1,9 +1,16 @@
-N = int(input())
-A = list(map(int, input().split()))
+S = list(map(int, input().split()))
 
-def calculate_weekly_steps(N, steps):
-    weekly_steps = []
-    for i in range(N):
-        weekly_steps.append(sum(steps[i*7:(i+1)*7]))
-    return weekly_steps
-print(*calculate_weekly_steps(N, A))
+def judge(S):
+    for i in range(len(S)):
+        if i != len(S) - 1:
+            if S[i] > S[i + 1]:
+                return False
+
+        if S[i] < 100 or S[i] > 675:
+            return False
+        
+        if S[i] % 25 != 0:
+            return False
+    return True
+
+print('Yes' if judge(S) else 'No')
