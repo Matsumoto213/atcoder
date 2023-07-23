@@ -1,16 +1,10 @@
-N = int(input())
-edges = list(map(int, input().split()))
-
-from collections import defaultdict
-
+# 関数再帰呼び出し上限回数対策
+import sys
+sys.setrecursionlimit(10**7)
 def find_cycle(N, edges):
-    graph = defaultdict(list)
-    for i in range(N):
-        graph[i+1] = edges[i]
-
-    visited = [0] * (N + 1)
+    graph = [0] + edges
+    visited = [0]*(N+1)
     stack = []
-
     def dfs(v):
         visited[v] = 1
         stack.append(v)
@@ -18,12 +12,12 @@ def find_cycle(N, edges):
             if visited[nv] == 0:
                 return dfs(nv)
             elif visited[nv] == 1:
+                print(stack,nv)
                 return stack[stack.index(nv):]
         stack.pop()
         visited[v] = 2
         return []
-
-    for i in range(1, N + 1):
+    for i in range(1, N+1):
         if visited[i] == 0:
             cycle = dfs(i)
             if cycle:
@@ -31,6 +25,10 @@ def find_cycle(N, edges):
 
     return []
 
-ans = find_cycle(N, edges)
-print(len(ans))
-print(*ans)
+N = int(input())
+edges = list(map(int, input().split()))
+cycle = find_cycle(N, edges)
+print(len(cycle))
+for v in cycle:
+    print(v, end=" ")
+print()
