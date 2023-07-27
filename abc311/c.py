@@ -9,10 +9,10 @@ def find_cycle(N, edges):
         visited[v] = 1
         stack.append(v)
         for nv in [graph[v]]:
+            print(visited,stack,nv)
             if visited[nv] == 0:
                 return dfs(nv)
             elif visited[nv] == 1:
-                print(stack,nv)
                 return stack[stack.index(nv):]
         stack.pop()
         visited[v] = 2
