@@ -24,7 +24,11 @@ def find_tak_codes(N, M, grid):
     result = []
     for i in range(N-8):
         for j in range(M-8):
-            sub_grid = [row[j:j+9] for row in grid[i:i+9]]
+            sub_grid = []
+            for row in grid[i:i+9]:
+                print(row,i,j)
+                sub_row = row[j:j+9]
+                sub_grid.append(sub_row)
             if matches_tak_code(sub_grid):
                 result.append((i+1, j+1))  # 1-indexed
 
