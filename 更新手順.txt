@@ -1,5 +1,5 @@
 git add .
-git commit -a -m "7月30日 abc312 復習"
+git commit -a -m "8月4日 abc313 復習"
 git push  origin main
 
 次の問題の解答をPythonで出力してください
