@@ -11,6 +11,7 @@ from pprint import pprint
 import numpy as np
 from functools import reduce, lru_cache     # decorator: メモ化. max_size=128
 import operator
+d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
 def II(): return int(input())
 def MI(): return map(int, input().split())
 def LI(): return list(map(int, input().split()))

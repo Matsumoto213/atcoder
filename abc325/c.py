@@ -23,22 +23,29 @@ def MS(): return input().split()
 def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
+d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
 H,W = MI()
 S = LLS(H)
-judge = [[False] * W] * H
-
-
+seen = [[False] * W for _ in range(H)]
+for i in range(H) :
+    for j in range(W) :
+        if S[i][j] != "#" :
+            seen[i][j] = True
 def dfs(x,y):
-    # そのマスから連結部分を再帰で探していく
-    # 四方八方のどれかが'#'であれば、深く進んでいき、連結とする
+    seen[x][y] = "."
+    for dr, dc in d:
+        nr = x + dr
+        nc = y + dc
 
-    # 左端の場合
-    if x == 1:
-        exit()
+        if (0 <= nr < H) and (0 <= nc < W):
+            if seen[nr][nc]:
+                continue
+            dfs(nr,nc)
+
 ans = 0
 for i in range(H):
     for j in range(W):
-        if not S[i][j]:
+        if not seen[i][j]:
             dfs(i,j)
             ans += 1
 print(ans)
