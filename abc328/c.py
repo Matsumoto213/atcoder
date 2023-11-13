@@ -11,6 +11,7 @@ from pprint import pprint
 import numpy as np
 from functools import reduce, lru_cache     # decorator: メモ化. max_size=128
 import operator
+from itertools import accumulate
 d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
 def II(): return int(input())
 def MI(): return map(int, input().split())
@@ -25,15 +26,17 @@ def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
 
-N = II()
-D = LI()
-ans = 0
-for i in range(N):
-    # iの初期値
-    month = i + 1
+N,Q = MI()
+S = I()
 
-    for j in range(1,D[i] + 1):
-        month_day = str(month) + str(j)
-        if len(set(month_day)) == 1:
-            ans += 1
-print(ans)
+L = [0] * (N + 1)
+for i in range(N - 1):
+    if S[i] == S[i + 1]:
+        L[i + 1] = 1
+
+L = list(accumulate(L))
+for _ in range(Q):
+    l, r = MI()
+    l -= 1
+    r -= 1
+    print(L[r] - L[l])
