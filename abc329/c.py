@@ -25,3 +25,16 @@ def MS(): return input().split()
 def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
+
+N = I()
+S = I()
+
+ans = 0
+for i in range(26):
+    ch = chr(ord("a")+i)
+    l = re.findall(f"{ch}+", S)
+    l.sort()
+    if l:
+        ans += len(l[-1])
+
+print(ans)

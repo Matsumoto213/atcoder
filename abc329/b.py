@@ -11,7 +11,6 @@ from pprint import pprint
 import numpy as np
 from functools import reduce, lru_cache     # decorator: メモ化. max_size=128
 import operator
-import re
 d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
 def II(): return int(input())
 def MI(): return map(int, input().split())
@@ -25,3 +24,8 @@ def MS(): return input().split()
 def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
+
+N = II()
+A = list(set(LI()))
+A.sort(reverse = True)
+print(A[1])
