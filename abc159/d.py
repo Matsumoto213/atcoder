@@ -25,3 +25,15 @@ def MS(): return input().split()
 def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
+
+N = II()
+A = LI()
+c = Counter(A)
+
+total = 0
+for i,value in c.items():
+    C[i] = len(list(comb(range(value),2)))
+    total += C[i]
+
+for i in range(N):
+    print(total - (c[A[i]] - 1))
