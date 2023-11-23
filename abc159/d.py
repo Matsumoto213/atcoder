@@ -12,6 +12,8 @@ import numpy as np
 from functools import reduce, lru_cache     # decorator: メモ化. max_size=128
 import operator
 import re
+from scipy.special import comb as cmb
+
 d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
 def II(): return int(input())
 def MI(): return map(int, input().split())
@@ -32,8 +34,7 @@ c = Counter(A)
 
 total = 0
 for i,value in c.items():
-    C[i] = len(list(comb(range(value),2)))
-    total += C[i]
+    total += cmb(value, 2, exact=True)
 
 for i in range(N):
     print(total - (c[A[i]] - 1))

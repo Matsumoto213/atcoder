@@ -27,3 +27,22 @@ def MS(): return input().split()
 def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
+
+N = int(input())
+S = LLS(N)
+
+C = defaultdict()
+
+for i in range(N):
+    C[i + 1] = 0
+
+for i in range(N):
+    for j in range(N):
+        if S[i][j] == 'o':
+            C[i + 1] += 1
+
+C = sorted(C.items(), key=lambda x:x[1], reverse = True)
+
+for i in range(N):
+    print(C[i][0], end = " ")
+print()
