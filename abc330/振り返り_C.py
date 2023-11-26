@@ -14,7 +14,7 @@ import operator
 import re
 from scipy.special import comb as cmb
 
-d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
+# d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
 def II(): return int(input())
 def MI(): return map(int, input().split())
 def LI(): return list(map(int, input().split()))
@@ -28,22 +28,15 @@ def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
 
-
 D = II()
-def find_min_difference(D):
-    min_diff = INF
-    for x in range(int(sqrt(D)) + 1):
-        y_squared = D - x ** 2
-        y = sqrt(y_squared)
-        if y.is_integer():
-            return 0
-        else:
-            diff = abs(x ** 2 + (int(y) ** 2) - D)
-            min_diff = min(min_diff, diff)
-            diff = abs(x ** 2 + (int(y) + 1) ** 2 - D)
-            min_diff = min(min_diff, diff)
-
-    return min_diff
-ans = find_min_difference(D)
+ans = D
+y = int(2e6)
+# x ** 2 + y ** 2 - D の最小値を求める
+for x in range(int(2e6)):
+    while (y > 0 and x * x + y * y > D):
+        y -= 1
+    
+    ans = min(ans, abs(x * x + y * y - D))
+    ans = min(ans, abs(x * x + (y + 1) * (y + 1) - D))
 
 print(ans)

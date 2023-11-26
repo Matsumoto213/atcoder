@@ -31,6 +31,8 @@ def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
 N,L,R = MI()
 A = LI()
 
+# L <= N[i] <= R であれば、そのまま出力
+# そうでない場合はLとRの近い方を出力
 def find_closest_elements(A, L, R):
     closest_elements = []
     for a in A:

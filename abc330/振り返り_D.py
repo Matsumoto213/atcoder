@@ -14,7 +14,7 @@ import operator
 import re
 from scipy.special import comb as cmb
 
-d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
+# d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
 def II(): return int(input())
 def MI(): return map(int, input().split())
 def LI(): return list(map(int, input().split()))
@@ -29,21 +29,19 @@ def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
 
 
-D = II()
-def find_min_difference(D):
-    min_diff = INF
-    for x in range(int(sqrt(D)) + 1):
-        y_squared = D - x ** 2
-        y = sqrt(y_squared)
-        if y.is_integer():
-            return 0
-        else:
-            diff = abs(x ** 2 + (int(y) ** 2) - D)
-            min_diff = min(min_diff, diff)
-            diff = abs(x ** 2 + (int(y) + 1) ** 2 - D)
-            min_diff = min(min_diff, diff)
+N = II()
+S = LLS(N)
+count = 0
+r = [0] * N
+c = [0] * N
+for i in range(N):
+    for j in range(N):
+        if S[i][j] == 'o':
+            r[i] += 1
+            c[j] += 1
 
-    return min_diff
-ans = find_min_difference(D)
-
-print(ans)
+for i in range(N):
+    for j in range(N):
+        if S[i][j] == 'o':
+            count += (r[i] - 1) * (c[j] - 1)
+print(count)

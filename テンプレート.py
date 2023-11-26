@@ -14,7 +14,7 @@ import operator
 import re
 from scipy.special import comb as cmb
 
-d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
+# d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
 def II(): return int(input())
 def MI(): return map(int, input().split())
 def LI(): return list(map(int, input().split()))
