@@ -191,3 +191,30 @@ def MS(): return input().split()
 def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
+
+N,Q = MI()
+A = LI()
+
+se = SortedSet([i for i in range(N + 1)])
+for a in A:
+    se.discard(a)
+
+C = Counter(A)
+
+for _ in range(Q):
+    i,x = MI()
+    i -= 1
+
+    prev = A[i]
+    A[i] = x
+
+    C[prev] -= 1
+    C[x] += 1
+
+    # 0になった際、リストにない集合のsetに追加
+    if C[prev] == 0:
+        se.add(prev)
+    
+    # リストにない集合から新しく追加したxを削除
+    se.discard(x)
+    print(se.ge(0))

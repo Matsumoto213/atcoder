@@ -191,3 +191,36 @@ def MS(): return input().split()
 def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
+
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+S = [input() for _ in range(N)]
+
+B = [(a, i) for i, a in enumerate(A)]
+B.sort(reverse = True)  # # 点数の高い順
+
+# 現状のポイントを計算する
+now_point = [0] * N
+for i, s in enumerate(S):
+    now_point[i] += i + 1
+    for a, flag in zip(A, s):
+        if flag == 'o':
+            now_point[i] += a
+
+max_point = max(now_point)
+ans_lst = [0] * N
+for i in range(N):
+    point = now_point[i]
+    if point == max_point:
+        continue
+    # 点数の高い順に、解いてない問題を解いていく
+    for a, j in B:
+        if S[i][j] == 'x':
+            point += a
+            ans_lst[i] += 1
+
+        if point > max_point:
+            break
+
+for ans in ans_lst:
+    print(ans)
