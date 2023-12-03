@@ -207,9 +207,10 @@ def find_highest_priced_set_efficient(N, M, main_dishes, side_dishes, excluded_c
     # 主菜と副菜の価格を降順でソート
     sorted_main_dishes = sorted(enumerate(main_dishes), key=lambda x: x[1], reverse=True)
     sorted_side_dishes = sorted(enumerate(side_dishes), key=lambda x: x[1], reverse=True)
-
+    print(sorted_main_dishes)
     # 最も高価な組み合わせを探す
     for main_index, main_price in sorted_main_dishes:
+        print(main_index, main_price)
         for side_index, side_price in sorted_side_dishes:
             if (main_index, side_index) not in excluded_set:
                 # この組み合わせが除外されていなければ、その価格が最高価格
