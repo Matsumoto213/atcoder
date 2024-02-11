@@ -13,6 +13,9 @@ from functools import reduce, lru_cache     # decorator: メモ化. max_size=128
 import operator
 import re
 from scipy.special import comb as cmb
+from functools import cache
+# 再帰関数使用時に利用
+# @cache
 
 """
 ・使い方(個人的まとめ)

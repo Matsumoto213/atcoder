@@ -1,24 +1,21 @@
-INF = float("inf")
+INF = float('inf')
 import sys
-
-sys.setrecursionlimit(10**7)
+sys.setrecursionlimit(10 ** 7)
 input = sys.stdin.readline
 from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 from math import ceil, floor, log2, log, sqrt, gcd
-from itertools import (
-    combinations as comb,
-    combinations_with_replacement as comb_w,
-    product,
-    permutations,
-)
+from itertools import combinations as comb, combinations_with_replacement as comb_w, product, permutations
 from collections import deque, defaultdict, Counter
 from pprint import pprint
 import numpy as np
-from functools import reduce, lru_cache  # decorator: メモ化. max_size=128
+from functools import reduce, lru_cache     # decorator: メモ化. max_size=128
 import operator
 import re
 from scipy.special import comb as cmb
+from functools import cache
+# 再帰関数使用時に利用
+# @cache
 
 """
 ・使い方(個人的まとめ)
@@ -38,14 +35,11 @@ s.index_right(x): x以下の要素の数を返す。
 https://github.com/tatyam-prime/SortedSet
 """
 from typing import Generic, Iterable, Iterator, List, Tuple, TypeVar, Optional
-
-T = TypeVar("T")
-
-
+T = TypeVar('T')
 class SortedSet(Generic[T]):
     BUCKET_RATIO = 16
     SPLIT_RATIO = 24
-
+    
     def __init__(self, a: Iterable[T] = []) -> None:
         "Make a new SortedSet from iterable. / O(N) if sorted and unique / O(N log N)"
         a = list(a)
@@ -58,30 +52,25 @@ class SortedSet(Generic[T]):
                 if not a or a[-1] != x:
                     a.append(x)
         bucket_size = int(ceil(sqrt(n / self.BUCKET_RATIO)))
-        self.a = [
-            a[n * i // bucket_size : n * (i + 1) // bucket_size]
-            for i in range(bucket_size)
-        ]
+        self.a = [a[n * i // bucket_size : n * (i + 1) // bucket_size] for i in range(bucket_size)]
 
     def __iter__(self) -> Iterator[T]:
         for i in self.a:
-            for j in i:
-                yield j
+            for j in i: yield j
 
     def __reversed__(self) -> Iterator[T]:
         for i in reversed(self.a):
-            for j in reversed(i):
-                yield j
-
+            for j in reversed(i): yield j
+    
     def __eq__(self, other) -> bool:
         return list(self) == list(other)
-
+    
     def __len__(self) -> int:
         return self.size
-
+    
     def __repr__(self) -> str:
         return "SortedSet" + str(self.a)
-
+    
     def __str__(self) -> str:
         s = str(list(self))
         return "{" + s[1 : len(s) - 1] + "}"
@@ -89,13 +78,11 @@ class SortedSet(Generic[T]):
     def _position(self, x: T) -> Tuple[List[T], int, int]:
         "return the bucket, index of the bucket and position in which x should be. self must not be empty."
         for i, a in enumerate(self.a):
-            if x <= a[-1]:
-                break
+            if x <= a[-1]: break
         return (a, i, bisect_left(a, x))
 
     def __contains__(self, x: T) -> bool:
-        if self.size == 0:
-            return False
+        if self.size == 0: return False
         a, _, i = self._position(x)
         return i != len(a) and a[i] == x
 
@@ -106,32 +93,28 @@ class SortedSet(Generic[T]):
             self.size = 1
             return True
         a, b, i = self._position(x)
-        if i != len(a) and a[i] == x:
-            return False
+        if i != len(a) and a[i] == x: return False
         a.insert(i, x)
         self.size += 1
         if len(a) > len(self.a) * self.SPLIT_RATIO:
             mid = len(a) >> 1
-            self.a[b : b + 1] = [a[:mid], a[mid:]]
+            self.a[b:b+1] = [a[:mid], a[mid:]]
         return True
-
+    
     def _pop(self, a: List[T], b: int, i: int) -> T:
         ans = a.pop(i)
         self.size -= 1
-        if not a:
-            del self.a[b]
+        if not a: del self.a[b]
         return ans
 
     def discard(self, x: T) -> bool:
         "Remove an element and return True if removed. / O(√N)"
-        if self.size == 0:
-            return False
+        if self.size == 0: return False
         a, b, i = self._position(x)
-        if i == len(a) or a[i] != x:
-            return False
+        if i == len(a) or a[i] != x: return False
         self._pop(a, b, i)
         return True
-
+    
     def lt(self, x: T) -> Optional[T]:
         "Find the largest element < x, or None if it doesn't exist."
         for a in reversed(self.a):
@@ -155,35 +138,31 @@ class SortedSet(Generic[T]):
         for a in self.a:
             if a[-1] >= x:
                 return a[bisect_left(a, x)]
-
+    
     def __getitem__(self, i: int) -> T:
         "Return the i-th element."
         if i < 0:
             for a in reversed(self.a):
                 i += len(a)
-                if i >= 0:
-                    return a[i]
+                if i >= 0: return a[i]
         else:
             for a in self.a:
-                if i < len(a):
-                    return a[i]
+                if i < len(a): return a[i]
                 i -= len(a)
         raise IndexError
-
+    
     def pop(self, i: int = -1) -> T:
         "Pop and return the i-th element."
         if i < 0:
             for b, a in enumerate(reversed(self.a)):
                 i += len(a)
-                if i >= 0:
-                    return self._pop(a, ~b, i)
+                if i >= 0: return self._pop(a, ~b, i)
         else:
             for b, a in enumerate(self.a):
-                if i < len(a):
-                    return self._pop(a, b, i)
+                if i < len(a): return self._pop(a, b, i)
                 i -= len(a)
         raise IndexError
-
+    
     def index(self, x: T) -> int:
         "Count the number of elements < x."
         ans = 0
@@ -202,90 +181,45 @@ class SortedSet(Generic[T]):
             ans += len(a)
         return ans
 
-
 # d = [(1, 0),(1, 1),(0, 1),(-1, 1),(-1, 0),(-1, -1),(0, -1),(1, -1)]
-def II():
-    return int(input())
-
-
-def MI():
-    return map(int, input().split())
-
-
-def LI():
-    return list(map(int, input().split()))
-
-
-def LISI():
-    return list(map(int, SI()))
-
-
-def LA(f):
-    return list(map(f, input().split()))
-
-
-def LLI(rows_number):
-    return [LI() for _ in range(rows_number)]
-
-
-def I():
-    return input()
-
-
-def SI():
-    return input().strip("\n")
-
-
-def MS():
-    return input().split()
-
-
-def LS():
-    return list(input().strip("\n"))
-
-
-def LLS(rows_number):
-    return [LS() for _ in range(rows_number)]
-
-
-def gen_matrix(h, w, init):
-    return [[init] * w for _ in range(h)]
+def II(): return int(input())
+def MI(): return map(int, input().split())
+def LI(): return list(map(int, input().split()))
+def LISI(): return list(map(int, SI()))
+def LA(f): return list(map(f, input().split()))
+def LLI(rows_number): return [LI() for _ in range(rows_number)]
+def I(): return input()
+def SI(): return input().strip('\n')
+def MS(): return input().split()
+def LS(): return list(input().strip('\n'))
+def LLS(rows_number): return [LS() for _ in range(rows_number)]
+def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
 
 
 N = II()
-ans = 0
 
+# # 辞書を使用して計算済みの結果をメモ化
+# memo = {1: 0}
 
-def calculate_cost(N):
-    # 各整数が生成される回数を追跡する辞書
-    count_dict = {N: 1}  # 初期状態ではNが1回生成されている
-    total_cost = 0
+# # 1からNまでのすべての値に対して計算
+# for n in range(2, N + 1):
+#     # 既に計算されている値は再利用
+#     if n not in memo:
+#         ans = 0
+#         # nが偶数の場合
+#         if n % 2 == 0:
+#             ans = memo[n // 2] * 2 + n
+#         # nが奇数の場合
+#         else:
+#             ans = memo[n // 2] + memo[(n + 1) // 2] + n
+#         memo[n] = ans
+#     print(memo)
+# print(memo[N])
 
-    while count_dict:
-        new_count_dict = {}
-        for x, count in count_dict.items():
-            # x円をcount回分だけ支払う
-            total_cost += x * count
+from functools import cache
 
-            if x > 1:  # xが1より大きい場合、分割を続ける
-                left = x // 2  # xを2で割った商
-                right = x - left  # xを2で割った余りを加算して右側の数を得る
+@cache
+def f(N):
+    return 0 if N == 1 else f(N // 2) + f((N + 1) // 2) + N
 
-                # 新たに生成される整数の回数を更新
-                if left in new_count_dict:
-                    new_count_dict[left] += count
-                else:
-                    new_count_dict[left] = count
-
-                if right in new_count_dict:
-                    new_count_dict[right] += count
-                else:
-                    new_count_dict[right] = count
-
-        # 次のループのために更新
-        count_dict = new_count_dict
-
-    return total_cost
-
-
-print(calculate_cost(N))
+print(f(N))
