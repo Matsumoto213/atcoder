@@ -1,3 +1,3 @@
 git add .
-git commit -a -m "3月2日 abc343 Cが解けない、、、"
+git commit -a -m "3月25日 精進"
 git push  origin main
