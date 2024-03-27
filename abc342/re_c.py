@@ -195,26 +195,28 @@ def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
 
-N,T = MI()
-ans = []
-set_score = {0: N}
-scores = {i: 0 for i in range(1, N+1)}
-for i in range(T):
-    a,b = MI()
+N = II()
+S = SI()
+Q = II()
 
-    # 更新後の値
-    x = scores[a] + b
+C = []
+D = []
+before_alpha = []
+after_alpha = []
 
-    set_score[scores[a]] -= 1
-    if set_score[scores[a]] == 0:
-        set_score.pop(scores[a])
-    
-    if x not in set_score:
-        set_score[x] = 1
-    else:
-        set_score[x] += 1
+for i in range(26):
+    before_alpha.append(chr(i + ord('a')))
+    after_alpha.append(chr(i + ord('a')))
 
-    scores[a] = x
-    ans.append(len(set_score))
+for _ in range(Q):
+    c,d = MS()
+    # afterの位置を更新する
+    for j in range(26):
+        if after_alpha[j] == c:
+            after_alpha[j]  = d
 
-print(*ans,sep="\n")
+for i in range(N):
+    # インデックスを取得
+    idx = before_alpha.index(S[i])
+    print(after_alpha[idx],end = "")
+print()

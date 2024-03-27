@@ -1,0 +1,15 @@
+{
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "p",
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d",
+                "P",
+            ]
+        }
+    ]    
+}
