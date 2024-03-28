@@ -211,6 +211,7 @@ def make_divisors(n):
 ans = 0
 for i in range(1,N + 1,2):
     ans_lst = make_divisors(i)
+    print(i,ans_lst)
     if len(ans_lst) == 8:
         ans += 1
 print(ans)
