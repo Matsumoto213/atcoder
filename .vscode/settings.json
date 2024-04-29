@@ -11,5 +11,8 @@
                 "P",
             ]
         }
-    ]    
+    ],
+    "files.associations": {
+        "ostream": "cpp"
+    }
 }

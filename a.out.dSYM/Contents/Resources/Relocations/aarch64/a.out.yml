@@ -1,0 +1,14 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     a.out
+relocations:
+  - { offsetInCU: 0xA8, offset: 0xA8, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003E44, symSize: 0x80 }
+  - { offsetInCU: 0xB0, offset: 0xB0, size: 0x8, addend: 0x0, symName: __ZNSt8__detail30__integer_to_chars_is_unsignedIjEE, symObjAddr: 0xD0, symBinAddr: 0x100003F54, symSize: 0x0 }
+  - { offsetInCU: 0x18779, offset: 0x18779, size: 0x8, addend: 0x0, symName: __ZStL8__ioinit, symObjAddr: 0x64578, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0x18A03, offset: 0x18A03, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_test.cpp, symObjAddr: 0xBC, symBinAddr: 0x100003F00, symSize: 0x14 }
+  - { offsetInCU: 0x18A0B, offset: 0x18A0B, size: 0x8, addend: 0x0, symName: __ZNSt8__detail30__integer_to_chars_is_unsignedIjEE, symObjAddr: 0xD0, symBinAddr: 0x100003F54, symSize: 0x0 }
+  - { offsetInCU: 0x18A2D, offset: 0x18A2D, size: 0x8, addend: 0x0, symName: __Z41__static_initialization_and_destruction_0v, symObjAddr: 0x80, symBinAddr: 0x100003EC4, symSize: 0x3C }
+  - { offsetInCU: 0x18A35, offset: 0x18A35, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_test.cpp, symObjAddr: 0xBC, symBinAddr: 0x100003F00, symSize: 0x14 }
+  - { offsetInCU: 0x18A27, offset: 0x18A27, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003E44, symSize: 0x80 }
+  - { offsetInCU: 0x18A2F, offset: 0x18A2F, size: 0x8, addend: 0x0, symName: __Z41__static_initialization_and_destruction_0v, symObjAddr: 0x80, symBinAddr: 0x100003EC4, symSize: 0x3C }
+...
