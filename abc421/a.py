@@ -195,3 +195,16 @@ def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
 def NS(rows_number): return [SI() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
+
+N = II()
+S = NS(N)
+X, Y = MS()
+
+for i in range(N):
+    idx = i + 1
+
+    if int(X) == idx and S[i] == Y:
+        print('Yes')
+        exit()
+
+print('No')

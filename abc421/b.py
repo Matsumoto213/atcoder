@@ -193,5 +193,21 @@ def SI(): return input().strip('\n')
 def MS(): return input().split()
 def LS(): return list(input().strip('\n'))
 def LLS(rows_number): return [LS() for _ in range(rows_number)]
-def NS(rows_number): return [SI() for _ in range(rows_number)]
 def gen_matrix(h, w, init): return [[init] * w for _ in range(h)]
+
+x,y = MI()
+
+L = []
+L.append(x)
+L.append(y)
+
+for i in range(2,10):
+    app = L[i - 2] + L[i  - 1]
+    if app >= 10:
+        app = str(app)
+        app = app[::-1]
+        L.append(int(app))
+    else:
+        L.append(app)
+
+print(L[-1])
