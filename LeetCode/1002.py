@@ -1,6 +1,5 @@
 N = int(input())
 words = [input() for _ in range(N)]
-# words = input().split()
 
 from collections import Counter
 
@@ -14,6 +13,4 @@ def common_characters(words):
     # 結果を返す
     return common_chars
 
-    # 結果を返す
-    return common_chars
 print(common_characters(words))
